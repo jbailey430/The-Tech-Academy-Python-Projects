@@ -28,6 +28,7 @@ class ParentWindow(Frame):
         guiDrill_func.center_window(self,600,175)
         self.master.title('Check files')
         self.master.config(bg='lightgray')
+        
        
         
             

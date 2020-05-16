@@ -27,9 +27,9 @@ def create_DB(self):
         cur = conn.cursor()
         cur.execute("CREATE TABLE IF NOT EXISTS tbl_file( \
             ID INTEGER PRIMARY KEY AUTOINCREMENT, \
-            file_name TEXT \
-            mTime DATETIME \
-            )")
+            file_name TEXT, \
+            mTime TEXT\
+            );")
         conn.commit()
     conn.close()
 
@@ -54,26 +54,28 @@ def choose_file1(self):
         print('No File Exist')
 
 def check_files(self):
+    create_DB(self)
+    conn = sqlite3.connect ('guiDrill.db')
     
     
     dir_list = os.listdir(self.name)
-    print (dir_list)
+    
 
 
     for file in dir_list:
-        src = self.txt_filepath
-        dest = self.txt_filepath_2
+        src = self.txt_filepath.get()
+        dest = self.txt_filepath_2.get()
     
 
         if (file.endswith('.txt')):
             abPath = os.path.join(self.name, file)
             mTime = os.path.getmtime(abPath)
             print (file, mTime)
-            shutil.move(file, dest)
+            shutil.move(abPath, dest)
             with conn:
                 cur = conn.cursor()
                 cur.execute("INSERT INTO tbl_file(file_name, mTime) VALUES (?,?)", \
-                    (file))
+                    (file,mTime))
                 conn.commit()
     conn.close()
             
