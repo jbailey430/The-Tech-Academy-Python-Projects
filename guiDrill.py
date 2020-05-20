@@ -35,7 +35,7 @@ class ParentWindow(Frame):
         self.button = tk.Button(self.master, text='Broswe...', width=12,command = lambda: guiDrill_func.choose_file(self))
         self.button.grid(row=1,column=0,padx=(20,0),pady=(20,0))
         self.button1 = tk.Button(self.master, text='Broswe...', width=12,command = lambda: guiDrill_func.choose_file1(self))
-        self.button1.grid(row=2,column=0,padx=(20,0) ,pady=(20,0))
+        self.button1.grid(row=2, column=0,padx=(20,0) ,pady=(20,0))
         self.button2 = tk.Button(self.master, text='Check for files...',height=2, width=12, command = lambda: guiDrill_func.check_files(self))
         self.button2.grid(row=3,column=0, rowspan=2,padx=(20,0), pady=(20,0))
         self.button3 = tk.Button(self.master, text='Close Program',height=2, width=12, command=self.master.destroy)
